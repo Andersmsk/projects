@@ -1,11 +1,13 @@
 package by.rudkouski.covidHospital.entity;
 
 import org.springframework.context.annotation.EnableMBeanExport;
+import org.springframework.context.annotation.Role;
 
 import javax.persistence.*;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 
 @Entity
@@ -13,22 +15,29 @@ import javax.persistence.Id;
 public class Doctor {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+    @NotBlank(message = "Incorrect name")
     private String name;
+    @NotBlank(message = "Incorrect surname")
     private String surname;
+    @NotBlank(message = "Incorrect qualification")
     private String qualification;
+    @NotBlank(message = "Cannot be blank")
     private String login;
     @Column(name="password")
+    @NotBlank(message = "Cannot be blank")
     private String password;
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Role role;
 
-    public Status getStatus() {
-        return status;
+    public Role getRole() {
+        return role;
     }
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setRole(Role role) {
+        this.role = role;
     }
+
     public int getId() {
         return id;
     }

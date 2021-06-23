@@ -24,10 +24,10 @@ public class PatientController {
     }
 
     @GetMapping("/hospital")
-    public String findAllDoctors(Model model) {
+    public String findAllPatients(Model model) {
         List<Patient> allPatients = patientService.findAllPatients();
-        model.addAttribute("patients", allPatients);
-        return "patients";
+        model.addAttribute("patient", allPatients);
+        return "patient";
     }
 
     @PostMapping("/hospital")
@@ -37,9 +37,9 @@ public class PatientController {
             return "redirect/hospital";
         } catch (PatientSurnameIsExists exception){
             model.addAttribute( "error", exception.getMessage());
-            model.addAttribute("patients", patientService.findAllPatients());
-            return "patients";
+            model.addAttribute("patient", patientService.findAllPatients());
+            return "hospital";
         }
-    }
 
+    }
 }
