@@ -1,5 +1,5 @@
 package by.rudkouski.covidHospital.entity;
 
-public enum Status {
+public enum Role {
     ADMIN, USER;
 }
